@@ -1,0 +1,84 @@
+# 📘 LuxStay – Hotel Reservation Chatbot Documentation
+
+## 1. Introduction
+LuxStay is an AI-powered web-based hotel reservation chatbot that provides users with an interactive booking experience using Google Gemini API.
+
+---
+
+## 2. Objective
+- Provide conversational hotel booking system
+- Integrate AI-based responses
+- Build a premium modern user interface
+
+---
+
+## 3. Technologies Used
+- HTML5
+- CSS3
+- JavaScript (ES6)
+- Google Gemini API
+- Python HTTP Server
+
+---
+
+## 4. System Architecture
+
+User → Frontend (HTML/CSS/JS) → Gemini API → Response → Display in Chat UI
+
+---
+
+## 5. Working Flow
+
+1. User types message
+2. JavaScript captures input
+3. API call is sent to Gemini model
+4. AI generates response
+5. Response displayed with animation
+
+---
+
+## 6. API Details
+
+Model Used:
+- gemini-2.0-flash
+- gemini-2.5-flash (fallback)
+
+Method:
+POST request with JSON payload
+
+---
+
+## 7. UI Features
+- Dark premium theme
+- Typing indicator
+- Smooth animation
+- Responsive layout
+- Reset conversation button
+
+---
+
+## 8. Advantages
+- Real-time AI communication
+- Simple and scalable design
+- Clean UI experience
+
+---
+
+## 9. Limitations
+- API key exposed in frontend
+- No backend security
+- No database integration
+
+---
+
+## 10. Future Improvements
+- Backend integration (Node.js / Flask)
+- Database for bookings
+- Payment gateway integration
+- Cloud deployment
+- Admin panel
+
+---
+
+## 11. Conclusion
+LuxStay chatbot demonstrates how conversational AI can modernize hotel booking systems through interactive and intelligent user experiences.

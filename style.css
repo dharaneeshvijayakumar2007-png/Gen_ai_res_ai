@@ -1,0 +1,240 @@
+:root {
+    --bg-color: #0f172a;
+    --accent-color: #f59e0b;
+    /* Amber Gold */
+    --accent-glow: rgba(245, 158, 11, 0.4);
+    --secondary-bg: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --glass-bg: rgba(15, 23, 42, 0.85);
+    /* Darker glass */
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --bot-msg-bg: #1e293b;
+    --user-msg-bg: linear-gradient(135deg, #f59e0b, #d97706);
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Outfit', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    height: 100vh;
+    /* Full viewport height */
+    width: 100vw;
+    /* Full viewport width */
+    overflow: hidden;
+    background-image:
+        radial-gradient(circle at 15% 50%, rgba(245, 158, 11, 0.08) 0%, transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(56, 189, 248, 0.08) 0%, transparent 25%);
+}
+
+.background-overlay {
+    display: none;
+    /* Removed for full screen */
+}
+
+.chat-container {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    /* Remove width constraint */
+    background: transparent;
+    border: none;
+    flex: 1;
+    overflow-y: auto;
+    padding: 40px 20%;
+    /* Centered content column */
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    scroll-behavior: smooth;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.2));
+}
+
+@media (max-width: 1024px) {
+    .chat-window {
+        padding: 20px 5%;
+    }
+}
+
+/* Scrollbar */
+.chat-window::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-window::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.chat-window::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+}
+
+.chat-window::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Messages */
+.message {
+    max-width: 70%;
+    padding: 16px 24px;
+    border-radius: 20px;
+    font-size: 1rem;
+    line-height: 1.6;
+    position: relative;
+    animation: slideUp 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    opacity: 0;
+    transform: translateY(20px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.bot-message {
+    align-self: flex-start;
+    background: var(--bot-msg-bg);
+    border: 1px solid var(--glass-border);
+    border-bottom-left-radius: 4px;
+    color: var(--text-primary);
+}
+
+.user-message {
+    align-self: flex-end;
+    background: var(--user-msg-bg);
+    color: #fff;
+    border-bottom-right-radius: 4px;
+    font-weight: 500;
+    box-shadow: 0 8px 20px -5px rgba(245, 158, 11, 0.3);
+}
+
+/* Floating Input Area */
+.chat-input-area {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    max-width: 800px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    display: flex;
+    gap: 12px;
+    z-index: 1000;
+}
+
+@media (max-width: 1024px) {
+    .chat-input-area {
+        width: 90%;
+        bottom: 20px;
+    }
+}
+
+#user-input {
+    flex: 1;
+    background: rgba(30, 41, 59, 0.95);
+    /* Solid dark blue-grey */
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50px;
+    /* Fully rounded */
+    padding: 20px 32px;
+    color: white;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    outline: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+#user-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+#user-input:focus {
+    background: rgba(30, 41, 59, 1);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(245, 158, 11, 0.3);
+    transform: translateY(-2px);
+}
+
+#send-btn {
+    background: var(--accent-color);
+    border: none;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #0f172a;
+    font-size: 1.3rem;
+    box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#send-btn:hover {
+    transform: scale(1.1);
+    background: #fbbf24;
+    box-shadow: 0 15px 40px rgba(245, 158, 11, 0.5);
+}
+
+#send-btn:active {
+    transform: scale(0.95);
+}
+
+/* Adjust Chat Window to account for floating input */
+.chat-window {
+    padding-bottom: 120px;
+    /* Space for input */
+}
+
+/* Typing Indicator */
+.typing-indicator {
+    padding: 16px 24px;
+    background: var(--bot-msg-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    border-bottom-left-radius: 4px;
+    display: flex;
+    gap: 6px;
+    width: fit-content;
+    align-self: flex-start;
+    margin-bottom: 12px;
+}
+
+.typing-dot {
+    width: 8px;
+    height: 8px;
+    /* Larger dots */
+    background: var(--text-secondary);
+    border-radius: 50%;
+    animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.typing-dot:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.typing-dot:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+/* Modal (Keep existing but update overlay) */
+.modal-overlay {
+    background: rgba(0, 0, 0, 0.9);
+}
